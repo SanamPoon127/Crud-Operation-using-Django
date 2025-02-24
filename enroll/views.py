@@ -16,7 +16,7 @@ def add_show(request):
             fm = StudentRegistation()  # this resets the form after adding student data
             
     else:
-        fm = StudentRegistation()
+        fm = StudentRegistation()  # Creates an empty form
     stud = User.objects.all()
     return render(request, 'enroll/addandshow.html', {'form': fm, 'stu': stud})
 

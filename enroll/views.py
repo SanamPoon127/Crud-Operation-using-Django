@@ -7,10 +7,11 @@ def add_show(request):
     if request.method == 'POST':
         fm = StudentRegistation(request.POST)
         if fm.is_valid():
-            #  fm.save() this is for normal save to admin page
+            #fm.save()# This saves form data to the database (User table)
+            # If you want to manually process the form data, you can do something like this:
             nm = fm.cleaned_data['name']
-            em = fm.cleaned_data['email']  # if you don't want to save this in the admin page, you can remove it.
-            pw = fm.cleaned_data['password']  # this is for saving in the admin page only
+            em = fm.cleaned_data['email']  # If you don't want to process or use this data, you can remove it.
+            pw = fm.cleaned_data['password']  # This is for manually saving form data into the User table
             reg = User(name=nm, email=em, password=pw)
             reg.save()
             fm = StudentRegistation()  # this resets the form after adding student data
